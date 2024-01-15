@@ -1,0 +1,31 @@
+:root {
+  --primary-color-: #737373;
+  --secondary-color: #c0e6de;
+  --third-color: #0b2027;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Poppins", sans-serif;
+}
+
+header{
+    background-color: var(--third-color);
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 2rem;
+    font-size: 2.5rem;
+}
+
+header svg {
+    width: 7rem;
+    height: 7rem;
+    margin-right: 1rem;
+}

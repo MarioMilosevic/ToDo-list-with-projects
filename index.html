@@ -1,13 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <title>ToDo list with projects</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <header>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 checkLogo">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        
+        <h1>ToDo List</h1>
+      </header>
+      <main>
+        <div class="projects">
+          <h2>Projects</h2>
+          <button>+ Add Project</button>
+        </div>
+        <div class="todos">
+          <h2>Todos</h2>
+          <button></button>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
