@@ -1,10 +1,10 @@
 "use strict";
-
+import { nanoid } from 'nanoid'
 
 export class Project {
   constructor(projectName) {
     this.projectName = projectName;
-    this.id = Math.random() * 100000
+    this.id = nanoid()
   }
 }
 
@@ -17,5 +17,10 @@ export class ProjectManager {
   }
   add(project) {
     this.projects.push(project);
+  }
+
+  filterProject(id){
+    const target = this.projects.filter(el => el.id === id)
+    return target
   }
 }

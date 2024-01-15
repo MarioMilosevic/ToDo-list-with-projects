@@ -1,5 +1,5 @@
 "use strict";
-import { toggleClass, createProject } from "./helpers";
+import { toggleClass, displayProject } from "./helpers";
 import { Project, ProjectManager } from "./classes";
 const projects = document.querySelector(".projects");
 const todos = document.querySelector(".todos");
@@ -22,10 +22,9 @@ addBtn.addEventListener("click", function () {
   const project = new Project(projectInput.value);
   projectMan.add(project);
   projectInput.value = "";
-  createProject(projects, project);
+  displayProject(projects, project);
   toggleClass("hidden", addProjectBtn);
   toggleClass("hidden", projectsInputDiv);
-  console.log(projectMan.getProjects());
 });
 
 cancelBtn.addEventListener("click", function () {
@@ -35,6 +34,10 @@ cancelBtn.addEventListener("click", function () {
 });
 
 projects.addEventListener("click", function (e) {
-  console.log("projects");
-  console.log(e.target.dataset.id);
+  const target = e.target;
+  console.log(target.dataset.projectName);
+  if (target.dataset.id) {
+  const project = projectMan.filterProject(target.dataset.id)
+
+  }
 });
