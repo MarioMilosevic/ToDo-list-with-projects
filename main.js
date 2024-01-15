@@ -1,5 +1,5 @@
 'use strict'
-import { toggleClass } from "./helpers"
+import { toggleClass, createProject } from "./helpers"
 import { Project, ProjectManager } from "./classes"
 const projects = document.querySelector('.projects')
 const todos = document.querySelector('.todos')
@@ -15,16 +15,21 @@ const projectMan = new ProjectManager()
 addProjectBtn.addEventListener('click', function(){
     toggleClass('hidden', addProjectBtn)
     toggleClass('hidden', projectsInputDiv)
+    projectInput.focus()
 })
 
 addBtn.addEventListener('click', function(){
     const project = new Project(projectInput.value)
     projectMan.add(project)
     projectInput.value = ''
+    createProject(projects, project)
+    toggleClass('hidden', addProjectBtn)
+    toggleClass('hidden', projectsInputDiv)
     console.log(projectMan.getProjects());
 })
 
 cancelBtn.addEventListener('click', function(){
     toggleClass('hidden', addProjectBtn)
     toggleClass('hidden', projectsInputDiv)
+    projectInput.value = ''
 })
