@@ -1,7 +1,8 @@
 :root {
-  --primary-color-: #737373;
-  --secondary-color: #c0e6de;
-  --third-color: #0b2027;
+  --primary-color-: #e6e6e6;
+  --secondary-color: #808080;
+  --secondary-color-hover:#666666;
+  --third-color: #0d0d0d;
 }
 
 * {
@@ -28,4 +29,53 @@ header svg {
     width: 7rem;
     height: 7rem;
     margin-right: 1rem;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.projects {
+    background-color: var(--secondary-color);
+    width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid white; */
+}
+
+.projects h2 {
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.projects svg {
+    width: 5rem;
+    height: 5rem;
+    /* margin: 2rem auto; */
+    cursor: pointer;
+}
+
+.addProject{
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+    padding: 0.8rem 1.6rem;
+    border: 1px solid white;
+    align-items: center;
+    margin: 2rem auto;
+    font-size: 1.6rem;
+    border-radius: 1.6rem;
+}
+
+.addProject:hover{
+    background-color: #e6e6e6;
+}
+
+.todos {
+    width: 80%;
+    background-color: var(--primary-color-);
 }
