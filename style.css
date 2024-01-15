@@ -39,7 +39,7 @@ main {
 .projects {
   background-color: var(--secondary-color);
   width: 20%;
-  height: 88vh;
+  height: 79.8vh;
   display: flex;
   flex-direction: column;
 }
@@ -104,4 +104,12 @@ main {
  .addTodo:hover {
     background-color: var(--secondary-color);
     color: #fff;
+ }
+
+ footer {
+    background-color: var(--third-color);
+    font-size: 2rem;
+    color: var(--primary-color-);
+    text-align: center;
+    padding: 2rem;
  }
