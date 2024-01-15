@@ -39,7 +39,7 @@ main {
 .projects {
   background-color: var(--secondary-color);
   width: 20%;
-  height: 79.8vh;
+  height: 81.9vh;
   display: flex;
   flex-direction: column;
 }
@@ -111,5 +111,5 @@ main {
     font-size: 2rem;
     color: var(--primary-color-);
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
  }
