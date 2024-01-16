@@ -5,17 +5,21 @@ export class Project {
   constructor(projectName) {
     this.projectName = projectName;
     this.id = nanoid();
-    this.todos = []
+    this.todos = [];
   }
 
-  addTodo(todo){
-    this.todos.push(todo)
+  addTodo(todo) {
+    this.todos.push(todo);
+  }
+  getTodos() {
+    return this.todos;
   }
 }
 
 export class ProjectManager {
   constructor() {
     this.projects = [];
+    this.clicked = null;
   }
   getProjects() {
     return this.projects;
@@ -24,8 +28,16 @@ export class ProjectManager {
     this.projects.push(project);
   }
 
-  filterProject(id) {
-    const target = this.projects.filter((el) => el.id === id);
+  setClickedProject(project){
+    this.clicked = project
+  }
+
+  getSelectedProject(){
+    return this.clicked
+  }
+
+  findProject(id) {
+    const target = this.projects.find((el) => el.id === id);
     return target;
   }
 }
@@ -33,8 +45,6 @@ export class ProjectManager {
 export class Todo {
   constructor(title, date) {
     this.title = title;
-    this.date = date
+    this.date = date;
   }
 }
-
-

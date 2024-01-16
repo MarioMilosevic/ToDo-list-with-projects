@@ -49,7 +49,6 @@ greenAddTodo.addEventListener('click', function(){
 
 addBtn.addEventListener("click", function () {
   const project = new Project(projectInput.value);
-  console.log(project);
   projectMan.add(project);
   projectInput.value = "";
   displayProject(projects, project);
@@ -66,15 +65,23 @@ cancelBtn.addEventListener("click", function () {
 projects.addEventListener("click", function (e) {
   const target = e.target;
   if (target.dataset.id) {
-    const project = projectMan.filterProject(target.dataset.id);
-    console.log(project);
-    displayTodos(todos, project)
+    const project = projectMan.findProject(target.dataset.id);
+    projectMan.setClickedProject(project)
+    const selectedProject = projectMan.getSelectedProject()
+    console.log(selectedProject);
+    console.log(project.getTodos())
   } 
 });
+
+
+
 
 // kada kliknem na PROJECT da mi se izlistaju ovamo svi njegovi TODO ako ih ima
 // moram da ih uzmem iz arraya
 // ADD TODO ce da pravi todo-ove i da ih smjesti u Projectov array 
+
+// const todo = new Todo(text, datum)
+// project.addTodo(todo)
 
 // addTodoBtn.addEventListener('click', function(){
   
