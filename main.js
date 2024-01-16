@@ -9,7 +9,12 @@ const projectsInputDiv = document.querySelector(".projectsInput");
 const cancelBtn = document.querySelector(".cancel");
 const projectInput = document.querySelector(".projectInput");
 const addBtn = document.querySelector(".add");
-
+// 
+const todoInputDiv = document.querySelector('.todoInputDiv')
+const todoInput = document.querySelector('.todoInput')
+const greenAddTodo = document.querySelector('.greenAddTodo')
+const redCancelTodo = document.querySelector('.redCancelTodo')
+// 
 const projectMan = new ProjectManager();
 
 addProjectBtn.addEventListener("click", function () {
@@ -17,6 +22,21 @@ addProjectBtn.addEventListener("click", function () {
   toggleClass("hidden", projectsInputDiv);
   projectInput.focus();
 });
+
+addTodoBtn.addEventListener('click', function(){
+  toggleClass('hidden', addTodoBtn)
+  toggleClass('hidden', todoInputDiv)
+  todoInput.focus()
+})
+
+redCancelTodo.addEventListener('click', function(){
+  toggleClass('hidden', addTodoBtn)
+  toggleClass('hidden', todoInputDiv)
+})
+
+greenAddTodo.addEventListener('click', function(){
+  
+})
 
 addBtn.addEventListener("click", function () {
   const project = new Project(projectInput.value);
