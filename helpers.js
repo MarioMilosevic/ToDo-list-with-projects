@@ -17,7 +17,7 @@ export const displayProject = (parent, child) => {
   parent.appendChild(project);
 };
 
-export const displayTodo = (parent,child) => {
+export const displayTodos = (parent,child) => {
   const todo = document.createElement('div')
   const todoInput = document.createElement('div')
   todo.classList.add('todo')
@@ -25,5 +25,5 @@ export const displayTodo = (parent,child) => {
   todo.innerHTML = `<button class="todoButton"></button>
   <p class="todoParagraph">Probni text</p>
   <input type="date">`
-  parent.appendChild(todo)
+  parent.prepend(todo)
 }

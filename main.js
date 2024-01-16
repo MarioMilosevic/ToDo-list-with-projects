@@ -1,5 +1,5 @@
 "use strict";
-import { toggleClass, displayProject, displayTodo } from "./helpers";
+import { toggleClass, displayProject, displayTodos } from "./helpers";
 import { Project, ProjectManager, Todo } from "./classes";
 const projects = document.querySelector(".projects");
 const todos = document.querySelector(".todos");
@@ -39,6 +39,15 @@ projects.addEventListener("click", function (e) {
   if (target.dataset.id) {
     const project = projectMan.filterProject(target.dataset.id);
     console.log(project);
-    displayTodo(todos, project)
+    displayTodos(todos, project)
   } 
 });
+
+// kada kliknem na PROJECT da mi se izlistaju ovamo svi njegovi TODO ako ih ima
+// moram da ih uzmem iz arraya
+// ADD TODO ce da pravi todo-ove i da ih smjesti u Projectov array 
+
+// addTodoBtn.addEventListener('click', function(){
+  
+//   // const todo = new Todo() 
+// })

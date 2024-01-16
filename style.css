@@ -50,13 +50,11 @@ main {
   font-size: 2.5rem;
 }
 
-.projectCheckLogo, .todoCheckLogo {
-    width: 5rem;
-    height: 5rem;
+.projectCheckLogo,
+.todoCheckLogo {
+  width: 5rem;
+  height: 5rem;
 }
-
-
-
 
 /* .projects svg,
 .todos svg {
@@ -81,37 +79,33 @@ main {
   background-color: var(--primary-color-);
 }
 
-.project{
-    width: 55%;
-    margin: 0 auto 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 2rem;
-    border-radius: 1.6rem;
-    padding: 0.8rem 1.6rem;
-    cursor: pointer;
+.project {
+  width: 55%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+  border-radius: 1.6rem;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
 }
-
-
 
 .project button {
- background-color: transparent;
- border-radius: 2rem;
- padding:0.4rem 0.8rem;
- cursor: pointer;
+  background-color: transparent;
+  border-radius: 2rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
 }
 
-
-
-.project:hover{
-    background-color: var(--primary-color-);
+.project:hover {
+  background-color: var(--primary-color-);
 }
 
 .projectIcon {
-    width: 3rem;
-    height: 3rem;
-    margin-right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
 }
 
 .inputButtons {
@@ -131,21 +125,26 @@ main {
   border: none;
   padding: 0.8rem 1.6rem;
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.add {
+.add,
+.greenAddTodo {
   background-color: #66b366;
 }
 
-.cancel {
+.cancel,
+.redCancelTodo {
   background-color: #ff6666;
 }
 
-.add:hover {
+.add:hover,
+.greenAddTodo:hover {
   background-color: #4da64d;
 }
 
-.cancel:hover {
+.cancel:hover,
+.redCancelTodo:hover {
   background-color: #ff4d4d;
 }
 
@@ -162,10 +161,6 @@ main {
   font-size: 1.8rem;
   padding-left: 1.6rem;
   border: none;
-}
-
-.hidden {
-  display: none;
 }
 
 .todos {
@@ -207,4 +202,42 @@ footer {
   color: var(--primary-color-);
   text-align: center;
   padding: 1rem;
+}
+
+.todoInputDiv {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  border-radius: 1.6rem;
+  font-size: 1.6rem;
+}
+
+.todoInput {
+  height: 50%;
+  border-radius: 1.6rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.8rem;
+}
+
+.todoButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem auto 0;
+  height: 50%;
+}
+
+.todoButtons button {
+  border-radius: 1rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  width: 45%;
+}
+
+.hidden {
+  display: none;
 }
