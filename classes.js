@@ -31,8 +31,9 @@ export class ProjectManager {
 }
 
 export class Todo {
-  constructor(description) {
+  constructor(description, date) {
     this.description = description;
+    this.date = date
   }
 }
 

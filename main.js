@@ -9,6 +9,7 @@ const projectsInputDiv = document.querySelector(".projectsInput");
 const cancelBtn = document.querySelector(".cancel");
 const projectInput = document.querySelector(".projectInput");
 const addBtn = document.querySelector(".add");
+const todoCheckLogo = document.querySelector('.todoCheckLogo')
 // 
 const todoInputDiv = document.querySelector('.todoInputDiv')
 const todoInput = document.querySelector('.todoInput')
@@ -23,7 +24,7 @@ addProjectBtn.addEventListener("click", function () {
   projectInput.focus();
 });
 
-addTodoBtn.addEventListener('click', function(){
+todoCheckLogo.addEventListener('click', function(){
   toggleClass('hidden', addTodoBtn)
   toggleClass('hidden', todoInputDiv)
   todoInput.focus()
@@ -35,7 +36,9 @@ redCancelTodo.addEventListener('click', function(){
 })
 
 greenAddTodo.addEventListener('click', function(){
-  
+  console.log(todoInput.value)
+  const todo = new Todo(todoInput.value)
+  displayTodos(todos, todo)
 })
 
 addBtn.addEventListener("click", function () {

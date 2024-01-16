@@ -25,5 +25,5 @@ export const displayTodos = (parent,child) => {
   todo.innerHTML = `<button class="todoButton"></button>
   <p class="todoParagraph">Probni text</p>
   <input type="date">`
-  parent.prepend(todo)
+  parent.appendChild(todo)
 }

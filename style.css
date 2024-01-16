@@ -178,11 +178,12 @@ main {
 .addTodo {
   display: flex;
   border: 1px solid black;
-  width: 50%;
+  width: 40%;
   margin: 2rem 0;
   border-radius: 1.6rem;
   font-size: 1.6rem;
   cursor: pointer;
+  justify-content: space-between;
   align-items: center;
   padding: 0.8rem 1.6rem;
 }
@@ -191,10 +192,11 @@ main {
   padding-left: 1.6rem;
 }
 
-.addTodo:hover {
+.addTodo:hover{
   background-color: var(--secondary-color);
   color: #fff;
 }
+
 
 footer {
   background-color: var(--third-color);
@@ -204,18 +206,41 @@ footer {
   padding: 1rem;
 }
 
+.todoInputs{
+  width: 100%;
+  /* border: 1px solid black; */
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputDate{
+  /* margin-left: 5rem; */
+  border-radius: 1.6rem;
+  padding: 0.8rem 1.6rem;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+
+
 .todoInputDiv {
   margin-top: 2rem;
   width: 40%;
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
   height: 10rem;
   border-radius: 1.6rem;
   font-size: 1.6rem;
 }
 
 .todoInput {
-  height: 50%;
+  height: 100%;
+  width: 60%;
   border-radius: 1.6rem;
   padding: 0.8rem 1.6rem;
   font-size: 1.8rem;
