@@ -12,6 +12,7 @@ const addBtn = document.querySelector(".add");
 const todoCheckLogo = document.querySelector('.todoCheckLogo')
 // 
 const todoInputDiv = document.querySelector('.todoInputDiv')
+const inputDate = document.querySelector('.inputDate')
 const todoInput = document.querySelector('.todoInput')
 const greenAddTodo = document.querySelector('.greenAddTodo')
 const redCancelTodo = document.querySelector('.redCancelTodo')
@@ -36,9 +37,14 @@ redCancelTodo.addEventListener('click', function(){
 })
 
 greenAddTodo.addEventListener('click', function(){
-  console.log(todoInput.value)
-  const todo = new Todo(todoInput.value)
-  displayTodos(todos, todo)
+  if(todoInput.value === '' || inputDate.value === ''){
+    alert('Input or date fields are not properly filled')
+  } else {
+    const todo = new Todo(todoInput.value, inputDate.value)
+    displayTodos(todos, todo)
+    toggleClass('hidden', addTodoBtn)
+    toggleClass('hidden', todoInputDiv)
+  }
 })
 
 addBtn.addEventListener("click", function () {

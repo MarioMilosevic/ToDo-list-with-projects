@@ -192,11 +192,10 @@ main {
   padding-left: 1.6rem;
 }
 
-.addTodo:hover{
+.addTodo:hover {
   background-color: var(--secondary-color);
   color: #fff;
 }
-
 
 footer {
   background-color: var(--third-color);
@@ -206,7 +205,7 @@ footer {
   padding: 1rem;
 }
 
-.todoInputs{
+.todoInputs {
   width: 100%;
   /* border: 1px solid black; */
   height: 50%;
@@ -215,7 +214,7 @@ footer {
   justify-content: space-between;
 }
 
-.inputDate{
+.inputDate {
   /* margin-left: 5rem; */
   border-radius: 1.6rem;
   padding: 0.8rem 1.6rem;
@@ -225,14 +224,12 @@ footer {
   font-size: 1.6rem;
 }
 
-
-
 .todoInputDiv {
   margin-top: 2rem;
   width: 40%;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 10rem;
   border-radius: 1.6rem;
   font-size: 1.6rem;
@@ -251,7 +248,7 @@ footer {
   justify-content: space-between;
   width: 100%;
   margin: 1rem auto 0;
-  height: 50%;
+  height: 45%;
 }
 
 .todoButtons button {
@@ -264,6 +261,71 @@ footer {
   width: 45%;
 }
 
+.todoSvg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.todo {
+  border: 1px solid black;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+ padding: 2rem; 
+ margin-bottom: 2rem;
+ border-radius: 1rem;
+}
+
+.todo:hover{
+  background-color: var(--secondary-color);
+  color: var(--primary-color-);
+}
+
+.todoTitle{
+  border: 1px solid black;
+  width: 35%;
+}
+
+.todo button {
+  padding:1rem 2rem;
+  border-radius: 1rem;
+  border: none;
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.editTodoButton {
+  background-color:#66b366
+}
+
+.deleteTodoButton {
+background-color: #ff6666;}
+
+
+.editTodoButton:hover{
+  background-color: #4da64d;
+}
+.deleteTodoButton:hover{
+  background-color: #ff4d4d;
+}
+
+.todoInputButtons{
+  display: flex;
+}
+
+
 .hidden {
   display: none;
+}
+
+input[type='checkbox']{
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border: 0.15rem solid black;
+  border-radius: 1rem;
+  place-content: center;
 }
