@@ -112,6 +112,9 @@ todoList.addEventListener('click', function(e){
     console.log(target);
     const project = projectMan.getSelectedProject()
     project.removeTodo(todoId)
+    const li = target.parentElement.parentElement
+    li.remove()
+    console.log(li);
     console.log(project)
     console.log(project.getTodos());
   }
