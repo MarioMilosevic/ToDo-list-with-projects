@@ -56,11 +56,6 @@ main {
   height: 5rem;
 }
 
-/* .projects svg,
-.todos svg {
-  width: 5rem;
-  height: 5rem;
-} */
 
 .addProject {
   display: flex;
@@ -96,6 +91,11 @@ main {
   border-radius: 2rem;
   padding: 0.4rem 0.8rem;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.project button:hover{
+  transform: scale(1.1);
 }
 
 .project:hover {
@@ -327,4 +327,8 @@ input[type='checkbox']{
   border: 0.15rem solid black;
   border-radius: 1rem;
   place-content: center;
+}
+
+.projectList{
+  margin-top: 5rem;
 }

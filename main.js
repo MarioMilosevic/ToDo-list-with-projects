@@ -10,6 +10,7 @@ const cancelBtn = document.querySelector(".cancel");
 const projectInput = document.querySelector(".projectInput");
 const addBtn = document.querySelector(".add");
 const todoCheckLogo = document.querySelector('.todoCheckLogo')
+const projectList = document.querySelector('.projectList')
 // 
 const todoInputDiv = document.querySelector('.todoInputDiv')
 const inputDate = document.querySelector('.inputDate')
@@ -51,7 +52,7 @@ addBtn.addEventListener("click", function () {
   const project = new Project(projectInput.value);
   projectMan.add(project);
   projectInput.value = "";
-  displayProject(projects, project);
+  displayProject(projectList, project);
   toggleClass("hidden", addProjectBtn);
   toggleClass("hidden", projectsInputDiv);
 });
@@ -62,7 +63,7 @@ cancelBtn.addEventListener("click", function () {
   projectInput.value = "";
 });
 
-projects.addEventListener("click", function (e) {
+projectList.addEventListener("click", function (e) {
   const target = e.target;
   console.log(target);
   if (target.dataset.id) {

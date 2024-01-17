@@ -5,7 +5,7 @@ export const toggleClass = (cl, el) => {
 };
 
 export const displayProject = (parent, child) => {
-  const project = document.createElement("div");
+  const project = document.createElement("li");
   project.classList.add("project");
   project.dataset.id = child.id;
   project.innerHTML = `
