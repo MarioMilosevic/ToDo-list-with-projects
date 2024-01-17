@@ -70,18 +70,12 @@ projectList.addEventListener("click", function (e) {
     const project = projectMan.findProject(target.dataset.id);
     projectMan.setClickedProject(project)
     const selectedProject = projectMan.getSelectedProject()
-    console.log(selectedProject);
-    console.log(project.getTodos())
-    console.log('nesto 1');
-    console.log('STANJE ARRAYA PRIJE KLIKA NA DELETE DUGME',projectMan.getProjects());
-    console.log('------------------------------------');
   } if(e.target.matches('.deleteBtn') ){
-    console.log(e.target.parentElement);
-
+    const parentDiv = e.target.parentElement
+    parentDiv.remove()
     const project = projectMan.getSelectedProject()
     projectMan.remove(project)
-
-    console.log('nesto 2');
+    projectMan.setClickedProject(null)
   }
 });
 
