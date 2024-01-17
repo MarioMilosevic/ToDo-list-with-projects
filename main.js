@@ -64,13 +64,16 @@ cancelBtn.addEventListener("click", function () {
 
 projects.addEventListener("click", function (e) {
   const target = e.target;
+  console.log(target);
   if (target.dataset.id) {
     const project = projectMan.findProject(target.dataset.id);
     projectMan.setClickedProject(project)
     const selectedProject = projectMan.getSelectedProject()
     console.log(selectedProject);
     console.log(project.getTodos())
-  } 
+  } if(e.target.matches('.deleteBtn') ){
+    console.log('dugme');
+  }
 });
 
 
