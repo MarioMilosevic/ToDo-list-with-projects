@@ -51,6 +51,8 @@ greenAddTodo.addEventListener("click", function () {
     displayTodos(todoList, todo);
     toggleClass("hidden", addTodoBtn);
     toggleClass("hidden", todoInputDiv);
+    todoInput.value = ''
+    inputDate.value = ''
   }
 });
 
@@ -81,6 +83,14 @@ projectList.addEventListener("click", function (e) {
     target.classList.add("selected");
     const project = projectMan.findProject(target.dataset.id);
     projectMan.setClickedProject(project);
+    // da uzmem todos [] i da svaki pojedinacno ubacim u todoList
+    const projectTodos = project.getTodos()
+    todoList.innerHTML = ''
+    projectTodos.forEach(todo => {
+      displayTodos(todoList, todo)
+    })
+    console.log(projectTodos);
+    console.dir(projectTodos);
     console.log(project.getTodos())
   }
   if (e.target.matches(".deleteBtn")) {
