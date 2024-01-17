@@ -11,7 +11,7 @@ const projectInput = document.querySelector(".projectInput");
 const addBtn = document.querySelector(".add");
 const todoCheckLogo = document.querySelector(".todoCheckLogo");
 const projectList = document.querySelector(".projectList");
-//
+const todoList = document.querySelector('.todoList')
 const todoInputDiv = document.querySelector(".todoInputDiv");
 const inputDate = document.querySelector(".inputDate");
 const todoInput = document.querySelector(".todoInput");
@@ -27,9 +27,13 @@ addProjectBtn.addEventListener("click", function () {
 });
 
 todoCheckLogo.addEventListener("click", function () {
-  toggleClass("hidden", addTodoBtn);
-  toggleClass("hidden", todoInputDiv);
-  todoInput.focus();
+  if(projectMan.getSelectedProject()) {
+    toggleClass("hidden", addTodoBtn);
+    toggleClass("hidden", todoInputDiv);
+    todoInput.focus();
+  } else {
+    alert('Select a project first')
+  }
 });
 
 redCancelTodo.addEventListener("click", function () {
@@ -42,11 +46,15 @@ greenAddTodo.addEventListener("click", function () {
     alert("Input or date fields are not properly filled");
   } else {
     const todo = new Todo(todoInput.value, inputDate.value);
-    displayTodos(todos, todo);
+    const selectedProject = projectMan.getSelectedProject()
+    selectedProject.addTodo(todo)
+    displayTodos(todoList, todo);
     toggleClass("hidden", addTodoBtn);
     toggleClass("hidden", todoInputDiv);
   }
 });
+
+// na klik selektovanog da se pojave njegovi TODO, i nakon toga da dodavanjem novih TODOa da se oni dodaju u dom i u njegov []
 
 addBtn.addEventListener("click", function () {
   const project = new Project(projectInput.value);
@@ -71,13 +79,9 @@ projectList.addEventListener("click", function (e) {
       li.classList.remove("selected");
     });
     target.classList.add("selected");
-    console.dir(target.dataset.id);
     const project = projectMan.findProject(target.dataset.id);
     projectMan.setClickedProject(project);
-    if (project === projectMan.getSelectedProject()) {
-      console.log("to je to");
-    }
-    const selectedProject = projectMan.getSelectedProject();
+    console.log(project.getTodos())
   }
   if (e.target.matches(".deleteBtn")) {
     const parentDiv = e.target.parentElement;
@@ -88,16 +92,10 @@ projectList.addEventListener("click", function (e) {
   }
 });
 
-// klikom na BUTTON trebam da nadjem array projekata, i preko CLICKED da ga maknem iz arraya, pa da vratim ove sto postoje
+
 
 // kada kliknem na PROJECT da mi se izlistaju ovamo svi njegovi TODO ako ih ima
 // moram da ih uzmem iz arraya
 // ADD TODO ce da pravi todo-ove i da ih smjesti u Projectov array
 
-// const todo = new Todo(text, datum)
-// project.addTodo(todo)
 
-// addTodoBtn.addEventListener('click', function(){
-
-//   // const todo = new Todo()
-// })

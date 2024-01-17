@@ -11,6 +11,9 @@ export class Project {
   addTodo(todo) {
     this.todos.push(todo);
   }
+  removeTodo(project) {
+    this.todos = this.todos.filter((el) => el.id !== project.id);
+  }
   getTodos() {
     return this.todos;
   }
@@ -28,16 +31,16 @@ export class ProjectManager {
     this.projects.push(project);
   }
 
-  remove(project){
-   this.projects = this.projects.filter(el => el.id !== project.id)
+  remove(project) {
+    this.projects = this.projects.filter((el) => el.id !== project.id);
   }
 
-  setClickedProject(project){
-    this.clicked = project
+  setClickedProject(project) {
+    this.clicked = project;
   }
 
-  getSelectedProject(){
-    return this.clicked
+  getSelectedProject() {
+    return this.clicked;
   }
 
   findProject(id) {
