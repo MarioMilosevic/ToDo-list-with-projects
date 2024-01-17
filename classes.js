@@ -28,6 +28,10 @@ export class ProjectManager {
     this.projects.push(project);
   }
 
+  remove(project){
+   this.projects = this.projects.filter(el => el.id !== project.id)
+  }
+
   setClickedProject(project){
     this.clicked = project
   }

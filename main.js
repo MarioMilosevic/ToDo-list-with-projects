@@ -72,12 +72,20 @@ projectList.addEventListener("click", function (e) {
     const selectedProject = projectMan.getSelectedProject()
     console.log(selectedProject);
     console.log(project.getTodos())
+    console.log('nesto 1');
+    console.log('STANJE ARRAYA PRIJE KLIKA NA DELETE DUGME',projectMan.getProjects());
+    console.log('------------------------------------');
   } if(e.target.matches('.deleteBtn') ){
-    console.log('dugme');
+    console.log(e.target.parentElement);
+
+    const project = projectMan.getSelectedProject()
+    projectMan.remove(project)
+
+    console.log('nesto 2');
   }
 });
 
-
+// klikom na BUTTON trebam da nadjem array projekata, i preko CLICKED da ga maknem iz arraya, pa da vratim ove sto postoje
 
 
 // kada kliknem na PROJECT da mi se izlistaju ovamo svi njegovi TODO ako ih ima
