@@ -332,3 +332,7 @@ input[type='checkbox']{
 .projectList{
   margin-top: 5rem;
 }
+
+.selected{
+  background-color: var(--primary-color-);
+}
