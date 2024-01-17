@@ -56,7 +56,6 @@ main {
   height: 5rem;
 }
 
-
 .addProject {
   display: flex;
   justify-content: space-between;
@@ -94,7 +93,7 @@ main {
   transition: all 0.3s;
 }
 
-.project button:hover{
+.project button:hover {
   transform: scale(1.1);
 }
 
@@ -273,22 +272,22 @@ footer {
   justify-content: space-between;
   align-items: center;
   font-size: 1.8rem;
- padding: 2rem; 
- margin-bottom: 2rem;
- border-radius: 1rem;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
 }
 
-.todo:hover{
+.todo:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color-);
 }
 
-.todoTitle{
+.todoTitle {
   width: 35%;
 }
 
 .todo button {
-  padding:1rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 1rem;
   border: none;
   font-weight: bold;
@@ -297,30 +296,31 @@ footer {
 }
 
 .editTodoButton {
-  background-color:#66b366
+  background-color: #66b366;
 }
 
 .deleteTodoButton {
-background-color: #ff6666;}
+  background-color: #ff6666;
+}
 
-
-.editTodoButton:hover{
+.editTodoButton:hover {
   background-color: #4da64d;
 }
-.deleteTodoButton:hover{
+.deleteTodoButton:hover {
   background-color: #ff4d4d;
 }
 
-.todoInputButtons{
+.todoInputButtons {
   display: flex;
+  width: 20%;
+  justify-content: space-between;
 }
-
 
 .hidden {
   display: none;
 }
 
-input[type='checkbox']{
+input[type="checkbox"] {
   appearance: none;
   width: 2rem;
   height: 2rem;
@@ -329,10 +329,22 @@ input[type='checkbox']{
   place-content: center;
 }
 
-.projectList{
+.projectList {
   margin-top: 5rem;
 }
 
-.selected{
+.selected {
   background-color: var(--primary-color-);
+}
+
+.todoDate{
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todoDate svg {
+  width: 2rem;
+  height: 2rem;
 }

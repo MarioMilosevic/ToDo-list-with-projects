@@ -11,13 +11,13 @@ const projectInput = document.querySelector(".projectInput");
 const addBtn = document.querySelector(".add");
 const todoCheckLogo = document.querySelector(".todoCheckLogo");
 const projectList = document.querySelector(".projectList");
-const todoList = document.querySelector('.todoList')
+const todoList = document.querySelector(".todoList");
 const todoInputDiv = document.querySelector(".todoInputDiv");
 const inputDate = document.querySelector(".inputDate");
 const todoInput = document.querySelector(".todoInput");
 const greenAddTodo = document.querySelector(".greenAddTodo");
 const redCancelTodo = document.querySelector(".redCancelTodo");
-//
+
 const projectMan = new ProjectManager();
 
 addProjectBtn.addEventListener("click", function () {
@@ -26,13 +26,13 @@ addProjectBtn.addEventListener("click", function () {
   projectInput.focus();
 });
 
-todoCheckLogo.addEventListener("click", function () {
-  if(projectMan.getSelectedProject()) {
+addTodoBtn.addEventListener("click", function () {
+  if (projectMan.getSelectedProject()) {
     toggleClass("hidden", addTodoBtn);
     toggleClass("hidden", todoInputDiv);
     todoInput.focus();
   } else {
-    alert('Select a project first')
+    alert("Select a project first");
   }
 });
 
@@ -46,17 +46,15 @@ greenAddTodo.addEventListener("click", function () {
     alert("Input or date fields are not properly filled");
   } else {
     const todo = new Todo(todoInput.value, inputDate.value);
-    const selectedProject = projectMan.getSelectedProject()
-    selectedProject.addTodo(todo)
+    const selectedProject = projectMan.getSelectedProject();
+    selectedProject.addTodo(todo);
     displayTodos(todoList, todo);
     toggleClass("hidden", addTodoBtn);
     toggleClass("hidden", todoInputDiv);
-    todoInput.value = ''
-    inputDate.value = ''
+    todoInput.value = "";
+    inputDate.value = "";
   }
 });
-
-// na klik selektovanog da se pojave njegovi TODO, i nakon toga da dodavanjem novih TODOa da se oni dodaju u dom i u njegov []
 
 addBtn.addEventListener("click", function () {
   const project = new Project(projectInput.value);
@@ -83,45 +81,32 @@ projectList.addEventListener("click", function (e) {
     target.classList.add("selected");
     const project = projectMan.findProject(target.dataset.id);
     projectMan.setClickedProject(project);
-    const projectTodos = project.getTodos()
-    todoList.innerHTML = ''
-    projectTodos.forEach(todo => {
-      displayTodos(todoList, todo)
-    })
+    const projectTodos = project.getTodos();
+    todoList.innerHTML = "";
+    projectTodos.forEach((todo) => {
+      displayTodos(todoList, todo);
+    });
   }
-  if (e.target.matches(".deleteBtn")) {
+  if (target.matches(".deleteBtn")) {
     const parentDiv = e.target.parentElement;
     parentDiv.remove();
     const project = projectMan.getSelectedProject();
     projectMan.remove(project);
+    todoList.innerHTML = ''
     projectMan.setClickedProject(null);
   }
 });
 
-todoList.addEventListener('click', function(e){
-  // if(e.target.dataset.id){
-  //   console.log('ID');
-  // }
-  if(e.target.matches('.editTodoButton')){
-    console.log('edit');
-  } if(e.target.matches('.deleteTodoButton')){
-    const target = e.target
-    const todoId = e.target.dataset.id
-
-    console.log(todoId);
-    console.log(target);
-    const project = projectMan.getSelectedProject()
-    project.removeTodo(todoId)
-    const li = target.parentElement.parentElement
-    li.remove()
-    console.log(li);
-    console.log(project)
-    console.log(project.getTodos());
+todoList.addEventListener("click", function (e) {
+  const target = e.target;
+  if (target.matches(".editTodoButton")) {
+    console.log("ne");
   }
-})
-
-// kada kliknem na PROJECT da mi se izlistaju ovamo svi njegovi TODO ako ih ima
-// moram da ih uzmem iz arraya
-// ADD TODO ce da pravi todo-ove i da ih smjesti u Projectov array
-
-
+  if (target.matches(".deleteTodoButton")) {
+    const todoId = e.target.dataset.id;
+    const project = projectMan.getSelectedProject();
+    project.removeTodo(todoId);
+    const li = target.parentElement.parentElement;
+    li.remove();
+  }
+});
