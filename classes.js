@@ -11,8 +11,8 @@ export class Project {
   addTodo(todo) {
     this.todos.push(todo);
   }
-  removeTodo(project) {
-    this.todos = this.todos.filter((el) => el.id !== project.id);
+  removeTodo(todoId) {
+    this.todos = this.todos.filter((el) => el.id !== todoId);
   }
   getTodos() {
     return this.todos;

@@ -83,15 +83,11 @@ projectList.addEventListener("click", function (e) {
     target.classList.add("selected");
     const project = projectMan.findProject(target.dataset.id);
     projectMan.setClickedProject(project);
-    // da uzmem todos [] i da svaki pojedinacno ubacim u todoList
     const projectTodos = project.getTodos()
     todoList.innerHTML = ''
     projectTodos.forEach(todo => {
       displayTodos(todoList, todo)
     })
-    console.log(projectTodos);
-    console.dir(projectTodos);
-    console.log(project.getTodos())
   }
   if (e.target.matches(".deleteBtn")) {
     const parentDiv = e.target.parentElement;
@@ -102,7 +98,24 @@ projectList.addEventListener("click", function (e) {
   }
 });
 
+todoList.addEventListener('click', function(e){
+  // if(e.target.dataset.id){
+  //   console.log('ID');
+  // }
+  if(e.target.matches('.editTodoButton')){
+    console.log('edit');
+  } if(e.target.matches('.deleteTodoButton')){
+    const target = e.target
+    const todoId = e.target.dataset.id
 
+    console.log(todoId);
+    console.log(target);
+    const project = projectMan.getSelectedProject()
+    project.removeTodo(todoId)
+    console.log(project)
+    console.log(project.getTodos());
+  }
+})
 
 // kada kliknem na PROJECT da mi se izlistaju ovamo svi njegovi TODO ako ih ima
 // moram da ih uzmem iz arraya
