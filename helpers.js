@@ -33,8 +33,8 @@ export const displayTodos = (parent, child) => {
 
   </div>
   <div class="todoActionButtons">
-  <button>Save</button>
-  <button>Cancel</button>
+  <button class="todoActionSave">Save</button>
+  <button class="todoActionDelete">Cancel</button>
   </div>
   `;
 
