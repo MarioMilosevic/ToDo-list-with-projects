@@ -20,6 +20,8 @@ const todoInput = document.querySelector(".todoInput");
 const greenAddTodo = document.querySelector(".greenAddTodo");
 const redCancelTodo = document.querySelector(".redCancelTodo");
 
+const nesto = document.querySelector(".nesto");
+
 const projectMan = new ProjectManager();
 
 addProjectBtn.addEventListener("click", function () {
@@ -83,11 +85,23 @@ cancelBtn.addEventListener("click", function () {
 
 projectList.addEventListener("click", function (e) {
   const target = e.target;
+  console.log(target);
+  console.dir(target);
   if (target.dataset.id) {
     const projects = [...projectList.children];
     projects.forEach((li) => {
       li.classList.remove("selected");
+      const childrenArr = Array.from(li.children);
+      console.log(li.children);
+      console.log(childrenArr);
+      childrenArr.forEach((child) => {
+        child.classList.remove("selected");
+      });
     });
+    if (target.matches(".projectTitle")) {
+      const parent = target.parentElement;
+      parent.classList.add("selected");
+    }
     target.classList.add("selected");
     const project = projectMan.findProject(target.dataset.id);
     projectMan.setClickedProject(project);
@@ -97,6 +111,7 @@ projectList.addEventListener("click", function (e) {
       displayTodos(todoList, todo);
     });
   }
+
   if (target.matches(".deleteBtn")) {
     const parentDiv = e.target.parentElement;
     parentDiv.remove();
@@ -111,10 +126,10 @@ todoList.addEventListener("click", function (e) {
   const target = e.target;
   if (target.matches(".editTodoButton")) {
     const projectTitle = document.querySelector(".projectTitle");
-    const projectDate = document.querySelector('.projectDate')
+    const projectDate = document.querySelector(".projectDate");
     const hiddenInputTodo = todoList.querySelector(".todoAction");
     const todoInput = hiddenInputTodo.querySelector('input[type="text"]');
-    const dateTodo = hiddenInputTodo.querySelector('input[type="date"]')
+    const dateTodo = hiddenInputTodo.querySelector('input[type="date"]');
     toggleClass("hidden", hiddenInputTodo);
 
     const saveBtn = hiddenInputTodo.querySelector(".todoActionSave");
@@ -122,12 +137,12 @@ todoList.addEventListener("click", function (e) {
 
     saveBtn.addEventListener("click", function () {
       projectTitle.innerText = todoInput.value;
-      projectDate.innerText = dateTodo.value
-      hiddenInputTodo.classList.add('hidden')
+      projectDate.innerText = dateTodo.value;
+      hiddenInputTodo.classList.add("hidden");
     });
 
     cancelBtn.addEventListener("click", function () {
-      hiddenInputTodo.classList.add('hidden')
+      hiddenInputTodo.classList.add("hidden");
     });
   }
   if (target.matches(".deleteTodoButton")) {
@@ -137,4 +152,8 @@ todoList.addEventListener("click", function (e) {
     const li = target.parentElement.parentElement;
     li.remove();
   }
+});
+
+nesto.addEventListener("click", function () {
+  console.log("radi");
 });

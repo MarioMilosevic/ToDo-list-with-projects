@@ -454,3 +454,10 @@ input[type="checkbox"] {
   2.da togglujem klasu ovog sakrivenog
   3.
 */
+
+.nesto {
+  background-color: var(--primary-color-);
+  width: 500px;
+  margin: 0 auto;
+  color: black;
+}
