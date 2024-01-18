@@ -17,6 +17,11 @@ export class Project {
   getTodos() {
     return this.todos;
   }
+
+  findTodo(todoId){
+    const todo = this.todos.find((el) => el.id === todoId);
+    return todo;
+  }
 }
 
 export class ProjectManager {
@@ -54,5 +59,14 @@ export class Todo {
     this.title = title;
     this.date = date;
     this.id = nanoid();
+    this.finished = false
+  }
+
+  invertFinished(){
+    this.finished = !this.finished 
+  }
+
+  getFinished(){
+    return this.finished
   }
 }

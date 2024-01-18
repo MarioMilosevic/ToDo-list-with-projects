@@ -20,8 +20,6 @@ const todoInput = document.querySelector(".todoInput");
 const greenAddTodo = document.querySelector(".greenAddTodo");
 const redCancelTodo = document.querySelector(".redCancelTodo");
 
-const nesto = document.querySelector(".nesto");
-
 const projectMan = new ProjectManager();
 
 addProjectBtn.addEventListener("click", function () {
@@ -85,15 +83,11 @@ cancelBtn.addEventListener("click", function () {
 
 projectList.addEventListener("click", function (e) {
   const target = e.target;
-  console.log(target);
-  console.dir(target);
   if (target.dataset.id) {
     const projects = [...projectList.children];
     projects.forEach((li) => {
       li.classList.remove("selected");
       const childrenArr = Array.from(li.children);
-      console.log(li.children);
-      console.log(childrenArr);
       childrenArr.forEach((child) => {
         child.classList.remove("selected");
       });
@@ -152,8 +146,9 @@ todoList.addEventListener("click", function (e) {
     const li = target.parentElement.parentElement;
     li.remove();
   }
-});
-
-nesto.addEventListener("click", function () {
-  console.log("radi");
+  if (target.dataset.id) {
+    const selectedProject = projectMan.getSelectedProject();
+    const selectedTodo = selectedProject.findTodo(target.dataset.id);
+    selectedTodo.invertFinished();
+  }
 });
