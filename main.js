@@ -3,15 +3,12 @@ import { toggleClass, displayProject, displayTodos } from "./helpers";
 import { Project, ProjectManager, Todo } from "./classes";
 import Swal from "sweetalert2";
 
-const projects = document.querySelector(".projects");
-const todos = document.querySelector(".todos");
 const addProjectBtn = document.querySelector(".addProject");
 const addTodoBtn = document.querySelector(".addTodo");
 const projectsInputDiv = document.querySelector(".projectsInput");
 const cancelBtn = document.querySelector(".cancel");
 const projectInput = document.querySelector(".projectInput");
 const addBtn = document.querySelector(".add");
-const todoCheckLogo = document.querySelector(".todoCheckLogo");
 const projectList = document.querySelector(".projectList");
 const todoList = document.querySelector(".todoList");
 const todoInputDiv = document.querySelector(".todoInputDiv");
@@ -119,7 +116,7 @@ projectList.addEventListener("click", function (e) {
 todoList.addEventListener("click", function (e) {
   const target = e.target;
   if (target.matches(".editTodoButton")) {
-    const projectTitle = document.querySelector(".projectTitle");
+    const projectTitleTodo = document.querySelector(".projectTitleTodo");
     const projectDate = document.querySelector(".projectDate");
     const hiddenInputTodo = todoList.querySelector(".todoAction");
     const todoInput = hiddenInputTodo.querySelector('input[type="text"]');
@@ -130,7 +127,7 @@ todoList.addEventListener("click", function (e) {
     const cancelBtn = hiddenInputTodo.querySelector(".todoActionDelete");
 
     saveBtn.addEventListener("click", function () {
-      projectTitle.innerText = todoInput.value;
+      projectTitleTodo.innerText = todoInput.value;
       projectDate.innerText = dateTodo.value;
       hiddenInputTodo.classList.add("hidden");
     });

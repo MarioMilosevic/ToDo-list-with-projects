@@ -44,7 +44,8 @@ export const displayTodos = (parent, child) => {
 </svg>
 <div class="todoTitle">
 <p class="pTitle">Title:</p>
-<p class="projectTitle">${child.title}</p>
+<p class="projectTitleTodo">${child.title}</p>
+
 </div>
 <div class="todoDate">
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
