@@ -110,12 +110,26 @@ projectList.addEventListener("click", function (e) {
 todoList.addEventListener("click", function (e) {
   const target = e.target;
   if (target.matches(".editTodoButton")) {
-    const projectTitle = document.querySelector('.projectTitle')
-    console.dir(projectTitle.innerText);
-   const hiddenInputTodo = todoList.querySelector('.todoAction')
-   const todoInput = hiddenInputTodo.querySelector('input')
-   todoInput.value = projectTitle.innerText
-   toggleClass("hidden",hiddenInputTodo)
+    const projectTitle = document.querySelector(".projectTitle");
+    const projectDate = document.querySelector('.projectDate')
+    console.dir(projectDate)
+    const hiddenInputTodo = todoList.querySelector(".todoAction");
+    const todoInput = hiddenInputTodo.querySelector('input[type="text"]');
+    const dateTodo = hiddenInputTodo.querySelector('input[type="date"]')
+    toggleClass("hidden", hiddenInputTodo);
+
+    const saveBtn = hiddenInputTodo.querySelector(".todoActionSave");
+    const deleteBtn = hiddenInputTodo.querySelector(".todoActionDelete");
+
+    saveBtn.addEventListener("click", function () {
+      projectTitle.innerText = todoInput.value;
+      projectDate.innerText = dateTodo.value
+      hiddenInputTodo.classList.add('hidden')
+    });
+
+    deleteBtn.addEventListener("click", function () {
+      console.log("deletebnt");
+    });
   }
   if (target.matches(".deleteTodoButton")) {
     const todoId = e.target.dataset.id;

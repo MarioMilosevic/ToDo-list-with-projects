@@ -309,6 +309,16 @@ footer {
   background-color: var(--second--button--hover);
 }
 
+.actionDate{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.actionDate input {
+  background-color: transparent;
+}
+
+
 .actionSvg {
   width: 2rem;
   height: 2rem;
@@ -349,8 +359,7 @@ footer {
   border-radius: 1rem;
 }
 
-.todo:hover,
-.todoActionInformation:hover {
+.todo:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color-);
 }
@@ -359,7 +368,7 @@ footer {
   width: 35%;
   display: flex;
 }
-.pTitle {
+.pTitle, .pDate {
   margin-right: 1rem;
 }
 
@@ -426,6 +435,10 @@ input[type="checkbox"] {
   height: 2rem;
 }
 
+.todoDateSubDiv{
+  display: flex;
+}
+
 .swal2-popup {
   font-size: 1.8rem !important;
 }
@@ -436,3 +449,8 @@ input[type="checkbox"] {
   width: 170px;
   height: 45px;
 }
+
+/* 1.da uzmem iz ovog input fielda value i asignujem je u ovaj iznad paragraf
+  2.da togglujem klasu ovog sakrivenog
+  3.
+*/
