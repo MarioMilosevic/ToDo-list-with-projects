@@ -1,6 +1,8 @@
 "use strict";
 import { toggleClass, displayProject, displayTodos } from "./helpers";
 import { Project, ProjectManager, Todo } from "./classes";
+import Swal from "sweetalert2";
+
 const projects = document.querySelector(".projects");
 const todos = document.querySelector(".todos");
 const addProjectBtn = document.querySelector(".addProject");
@@ -32,7 +34,11 @@ addTodoBtn.addEventListener("click", function () {
     toggleClass("hidden", todoInputDiv);
     todoInput.focus();
   } else {
-    alert("Select a project first");
+    Swal.fire({
+      icon: "error",
+      title:"Todo ?",
+      text:"Select a project first"
+    })
   }
 });
 
@@ -43,7 +49,11 @@ redCancelTodo.addEventListener("click", function () {
 
 greenAddTodo.addEventListener("click", function () {
   if (todoInput.value === "" || inputDate.value === "") {
-    alert("Input or date fields are not properly filled");
+    Swal.fire({
+      icon: "error",
+      title:"Todo ?",
+      text:"Input or date field are not filled properly"
+    })
   } else {
     const todo = new Todo(todoInput.value, inputDate.value);
     const selectedProject = projectMan.getSelectedProject();
