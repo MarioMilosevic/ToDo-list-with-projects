@@ -2,10 +2,10 @@
   --primary-color-: #e6e6e6;
   --secondary-color: #808080;
   --third-color: #0d0d0d;
-  --first--button--:#66b366;
-  --first--button--hover: #4da64d     ;
-  --second--button--:  #ff6666    ;
-  --second--button--hover:   #ff4d4d   ;
+  --first--button--: #66b366;
+  --first--button--hover: #4da64d;
+  --second--button--: #ff6666;
+  --second--button--hover: #ff4d4d;
 }
 
 * {
@@ -18,7 +18,6 @@ html {
   font-size: 62.5%;
   font-family: "Poppins", sans-serif;
 }
-
 
 header {
   background-color: var(--third-color);
@@ -246,10 +245,9 @@ footer {
   padding: 0.8rem 1.6rem;
   font-size: 1.8rem;
   /* border: 1px solid black; */
-
 }
 
-.todoActionInformation{
+.todoActionInformation {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -269,7 +267,7 @@ footer {
   font-size: 1.8rem;
 }
 
-.todoAction{
+.todoAction {
   /* border: 1px solid black; */
   margin-top: 2rem;
   display: flex;
@@ -290,30 +288,28 @@ footer {
   width: 45%;
   padding: 1rem 2rem;
   border-radius: 1rem;
-  border:none;
+  border: none;
   cursor: pointer;
   font-weight: bold;
   font-size: 1.8rem;
 }
 
-.todoActionSave{
+.todoActionSave {
   background-color: var(--first--button--);
 }
-.todoActionSave:hover{
-background-color: var(--first--button--hover);
+.todoActionSave:hover {
+  background-color: var(--first--button--hover);
 }
 
-.todoActionDelete{
+.todoActionDelete {
   background-color: var(--second--button--);
 }
 
-.todoActionDelete:hover{
+.todoActionDelete:hover {
   background-color: var(--second--button--hover);
 }
 
-
-
-.actionSvg{
+.actionSvg {
   width: 2rem;
   height: 2rem;
 }
@@ -353,13 +349,18 @@ background-color: var(--first--button--hover);
   border-radius: 1rem;
 }
 
-.todo:hover {
+.todo:hover,
+.todoActionInformation:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color-);
 }
 
 .todoTitle {
   width: 35%;
+  display: flex;
+}
+.pTitle {
+  margin-right: 1rem;
 }
 
 .todo button {
@@ -413,8 +414,8 @@ input[type="checkbox"] {
   background-color: var(--primary-color-);
 }
 
-.todoDate{
-  width: 25%;
+.todoDate {
+  width: 26%;
   display: flex;
   align-items: center;
   justify-content: space-between;

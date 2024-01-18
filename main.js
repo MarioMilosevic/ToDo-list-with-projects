@@ -36,9 +36,9 @@ addTodoBtn.addEventListener("click", function () {
   } else {
     Swal.fire({
       icon: "error",
-      title:"Todo ?",
-      text:"Select a project first"
-    })
+      title: "Todo ?",
+      text: "Select a project first",
+    });
   }
 });
 
@@ -51,9 +51,9 @@ greenAddTodo.addEventListener("click", function () {
   if (todoInput.value === "" || inputDate.value === "") {
     Swal.fire({
       icon: "error",
-      title:"Todo ?",
-      text:"Input or date field are not filled properly"
-    })
+      title: "Todo ?",
+      text: "Input or date field are not filled properly",
+    });
   } else {
     const todo = new Todo(todoInput.value, inputDate.value);
     const selectedProject = projectMan.getSelectedProject();
@@ -102,7 +102,7 @@ projectList.addEventListener("click", function (e) {
     parentDiv.remove();
     const project = projectMan.getSelectedProject();
     projectMan.remove(project);
-    todoList.innerHTML = ''
+    todoList.innerHTML = "";
     projectMan.setClickedProject(null);
   }
 });
@@ -110,7 +110,12 @@ projectList.addEventListener("click", function (e) {
 todoList.addEventListener("click", function (e) {
   const target = e.target;
   if (target.matches(".editTodoButton")) {
-    console.log("ne");
+    const projectTitle = document.querySelector('.projectTitle')
+    console.dir(projectTitle.innerText);
+   const hiddenInputTodo = todoList.querySelector('.todoAction')
+   const todoInput = hiddenInputTodo.querySelector('input')
+   todoInput.value = projectTitle.innerText
+   toggleClass("hidden",hiddenInputTodo)
   }
   if (target.matches(".deleteTodoButton")) {
     const todoId = e.target.dataset.id;
