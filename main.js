@@ -112,14 +112,13 @@ todoList.addEventListener("click", function (e) {
   if (target.matches(".editTodoButton")) {
     const projectTitle = document.querySelector(".projectTitle");
     const projectDate = document.querySelector('.projectDate')
-    console.dir(projectDate)
     const hiddenInputTodo = todoList.querySelector(".todoAction");
     const todoInput = hiddenInputTodo.querySelector('input[type="text"]');
     const dateTodo = hiddenInputTodo.querySelector('input[type="date"]')
     toggleClass("hidden", hiddenInputTodo);
 
     const saveBtn = hiddenInputTodo.querySelector(".todoActionSave");
-    const deleteBtn = hiddenInputTodo.querySelector(".todoActionDelete");
+    const cancelBtn = hiddenInputTodo.querySelector(".todoActionDelete");
 
     saveBtn.addEventListener("click", function () {
       projectTitle.innerText = todoInput.value;
@@ -127,8 +126,8 @@ todoList.addEventListener("click", function (e) {
       hiddenInputTodo.classList.add('hidden')
     });
 
-    deleteBtn.addEventListener("click", function () {
-      console.log("deletebnt");
+    cancelBtn.addEventListener("click", function () {
+      hiddenInputTodo.classList.add('hidden')
     });
   }
   if (target.matches(".deleteTodoButton")) {
