@@ -75,7 +75,7 @@ main {
 }
 
 .project {
-  width: 55%;
+  width: 70%;
   margin: 0 auto 1rem;
   display: flex;
   align-items: center;
@@ -241,6 +241,41 @@ footer {
   border-radius: 1.6rem;
   padding: 0.8rem 1.6rem;
   font-size: 1.8rem;
+}
+
+.todoActionInformation{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 2rem;
+  font-size: 1.8rem;
+}
+
+.todoActionInformation input {
+  width: 60%;
+  height: 100%;
+}
+
+.todoAction{
+  /* border: 1px solid black; */
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+  /* height: 10rem; */
+}
+
+.todoActionButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.actionSvg{
+  width: 2rem;
+  height: 2rem;
 }
 
 .todoButtons {

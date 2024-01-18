@@ -9,7 +9,7 @@ export const displayProject = (parent, child) => {
   project.classList.add("project");
   project.dataset.id = child.id;
   project.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 projectIcon" data-id="${child.id}">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 projectIcon">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" />
 </svg>
     <p>${child.projectName}</p>
@@ -19,6 +19,25 @@ export const displayProject = (parent, child) => {
 
 export const displayTodos = (parent, child) => {
   const todo = document.createElement("li");
+  const todoAction = document.createElement("li");
+  // todoAction.classList.add('todoInputDiv', 'hidden')
+  todoAction.classList.add("todoAction");
+  todoAction.innerHTML = `
+  <div class="todoActionInformation">
+  <p>Todo:</p>
+  <input type="text"> 
+  <div class="actionDate">Due date: 01/01/2024 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 actionSvg">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+  </svg>
+  </div>
+
+  </div>
+  <div class="todoActionButtons">
+  <button>Save</button>
+  <button>Cancel</button>
+  </div>
+  `;
+
   todo.classList.add("todo");
   todo.dataset.id = child.id;
   todo.innerHTML = `
@@ -40,6 +59,5 @@ export const displayTodos = (parent, child) => {
   <button data-id=${child.id} class="deleteTodoButton">Delete</button>
   </div>
   <input class="todoCheckBox" type="checkbox">`;
-  parent.appendChild(todo);
+  parent.append(todo, todoAction);
 };
-
