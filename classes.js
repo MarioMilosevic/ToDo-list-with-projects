@@ -62,6 +62,14 @@ export class Todo {
     this.finished = false
   }
 
+  setTodoTitle(title){
+this.title = title
+  }
+
+  setTodoDate(date){
+    this.date = date
+  }
+
   invertFinished(){
     this.finished = !this.finished 
   }
@@ -69,4 +77,11 @@ export class Todo {
   getFinished(){
     return this.finished
   }
+
+  getTodoTitle(){
+    return this.title
+  }
+getTodoDate(){
+return this.date
+}
 }

@@ -115,6 +115,10 @@ projectList.addEventListener("click", function (e) {
 
 todoList.addEventListener("click", function (e) {
   const target = e.target;
+  const selectedProject = projectMan.getSelectedProject();
+  const todoID = e.currentTarget.firstElementChild.dataset.id;
+  const todo = selectedProject.findTodo(todoID);
+
   if (target.matches(".editTodoButton")) {
     const projectTitleTodo = document.querySelector(".projectTitleTodo");
     const projectDate = document.querySelector(".projectDate");
@@ -128,8 +132,12 @@ todoList.addEventListener("click", function (e) {
 
     saveBtn.addEventListener("click", function () {
       projectTitleTodo.innerText = todoInput.value;
+      todo.setTodoTitle(projectTitleTodo.innerText);
+      todo.setTodoDate(projectDate.innerText);
       projectDate.innerText = dateTodo.value;
       hiddenInputTodo.classList.add("hidden");
+      console.log(todo.getTodoTitle());
+      console.log(todo.getTodoDate());
     });
 
     cancelBtn.addEventListener("click", function () {
@@ -149,3 +157,9 @@ todoList.addEventListener("click", function (e) {
     selectedTodo.invertFinished();
   }
 });
+
+// da nadjem nacin da uzmem id od TODOa na klik na todo DIV a da ne moram pojedinacno na svaki element da dajem dataset
+// nakon sto sam nasao id da pronadjem TODO u arrayu projekta
+// da tom TODO-u namjestim title i date
+
+// onda kasnije da provjerim za CHECKBOX da state ostane uvjek isti kada izadjem i ponovo pogledam u projekat
