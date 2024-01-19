@@ -1,5 +1,10 @@
 "use strict";
-import { toggleClass, displayProject, displayTodos } from "./helpers";
+import {
+  toggleClass,
+  displayProject,
+  displayTodos,
+  attachCheckboxEvent,
+} from "./helpers";
 import { Project, ProjectManager, Todo } from "./classes";
 import Swal from "sweetalert2";
 
@@ -56,6 +61,7 @@ greenAddTodo.addEventListener("click", function () {
     const selectedProject = projectMan.getSelectedProject();
     selectedProject.addTodo(todo);
     displayTodos(todoList, todo);
+    attachCheckboxEvent(todoList, todo);
     toggleClass("hidden", addTodoBtn);
     toggleClass("hidden", todoInputDiv);
     todoInput.value = "";
@@ -100,8 +106,11 @@ projectList.addEventListener("click", function (e) {
     todoList.innerHTML = "";
     projectTodos.forEach((todo) => {
       displayTodos(todoList, todo);
+      attachCheckboxEvent(todoList, todo);
     });
   }
+
+  // kada se renderuju TODO da u input proslijedim vrijednost iz stejta todo objekta
 
   if (target.matches(".deleteBtn")) {
     const parentDiv = e.target.parentElement;
@@ -115,9 +124,19 @@ projectList.addEventListener("click", function (e) {
 
 todoList.addEventListener("click", function (e) {
   const target = e.target;
-  const selectedProject = projectMan.getSelectedProject();
-  const todoID = e.currentTarget.firstElementChild.dataset.id;
-  const todo = selectedProject.findTodo(todoID);
+  // console.log(target);
+  // console.log('nadam se ID',target.dataset.id);
+  // console.log(e.target.checked);
+  // console.log(e.currentTarget);
+  // console.dir(e.currentTarget)
+  // const todoID = e.currentTarget.dataset.id;
+  // const todoID = e.currentTarget.firstElementChild.dataset.id;
+  // const todo = selectedProject.findTodo(todoID);
+  // console.log(todo);
+  // const checkbox = e.currentTarget.firstElementChild.lastElementChild;
+
+  // console.log("chechbox", checkbox);
+  // console.log("todoID", todoID);
 
   if (target.matches(".editTodoButton")) {
     const projectTitleTodo = document.querySelector(".projectTitleTodo");
@@ -136,8 +155,7 @@ todoList.addEventListener("click", function (e) {
       todo.setTodoDate(projectDate.innerText);
       projectDate.innerText = dateTodo.value;
       hiddenInputTodo.classList.add("hidden");
-      console.log(todo.getTodoTitle());
-      console.log(todo.getTodoDate());
+      //  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     });
 
     cancelBtn.addEventListener("click", function () {
@@ -151,15 +169,37 @@ todoList.addEventListener("click", function (e) {
     const li = target.parentElement.parentElement;
     li.remove();
   }
-  if (target.dataset.id) {
-    const selectedProject = projectMan.getSelectedProject();
-    const selectedTodo = selectedProject.findTodo(target.dataset.id);
-    selectedTodo.invertFinished();
+  // checkbox.addEventListener('change',function(){
+  //   todo.invertFinished();
+  //   console.log(todo.getFinished());
+  //   checkbox.checked = todo.getFinished()
+  //   console.log(checkbox.checked);
+
+  // })
+
+  if (target.matches(".todoCheckBox")) {
+    console.log(target.closest(".todo"));
+    console.dir(target.closest(".todo"));
+    const id = target.closest('.todo').dataset.id
+    
+    //   // todo.invertFinished(); // na prvi ce bit TRUE jer je prethodno FALSE
+    //   // if (todo.getFinished()) {
+    //   //   checkbox.setAttribute("checked", "");
+    //   //   // console.log(checkbox.checked);
+    //   // } else {
+    //   //   checkbox.removeAttribute("checked");
+    //   //   // console.log(checkbox.checked);
+    //   // }
+    //   // if(checkbox.checked){
+    //   //   return !checkbox.checked
+    //   // } else {
+    //   //   checkbox.checked
+    //   // }
+    //   // checkbox.checked = true ? false : true;
+    //   // console.log('stejt finished', todo.getFinished());
+    //   // console.log(checkbox.checked)
   }
 });
-
-// da nadjem nacin da uzmem id od TODOa na klik na todo DIV a da ne moram pojedinacno na svaki element da dajem dataset
-// nakon sto sam nasao id da pronadjem TODO u arrayu projekta
-// da tom TODO-u namjestim title i date
-
 // onda kasnije da provjerim za CHECKBOX da state ostane uvjek isti kada izadjem i ponovo pogledam u projekat
+
+// STRIK OSTAJE KAKO TREBA, NEGO MORAM DA PROVJERIM SELEKTOVANJE INPUTA I TODOa preko IDa

@@ -18,7 +18,7 @@ export class Project {
     return this.todos;
   }
 
-  findTodo(todoId){
+  findTodo(todoId) {
     const todo = this.todos.find((el) => el.id === todoId);
     return todo;
   }
@@ -59,29 +59,29 @@ export class Todo {
     this.title = title;
     this.date = date;
     this.id = nanoid();
-    this.finished = false
+    this.finished = false;
   }
 
-  setTodoTitle(title){
-this.title = title
+  setTodoTitle(title) {
+    this.title = title;
   }
 
-  setTodoDate(date){
-    this.date = date
+  setTodoDate(date) {
+    this.date = date;
   }
 
-  invertFinished(){
-    this.finished = !this.finished 
+  invertFinished() {
+    this.finished = !this.finished;
   }
 
-  getFinished(){
-    return this.finished
+  getFinished() {
+    return this.finished;
   }
 
-  getTodoTitle(){
-    return this.title
+  getTodoTitle() {
+    return this.title;
   }
-getTodoDate(){
-return this.date
-}
+  getTodoDate() {
+    return this.date;
+  }
 }
