@@ -180,8 +180,12 @@ todoList.addEventListener("click", function (e) {
   if (target.matches(".todoCheckBox")) {
     console.log(target.closest(".todo"));
     console.dir(target.closest(".todo"));
-    const id = target.closest('.todo').dataset.id
-    
+    const todoID = target.closest('.todo').dataset.id
+    const selectedProject = projectMan.getSelectedProject()
+    const selectedTtodo = selectedProject.findTodo(todoID)
+    selectedTtodo.invertFinished()
+
+
     //   // todo.invertFinished(); // na prvi ce bit TRUE jer je prethodno FALSE
     //   // if (todo.getFinished()) {
     //   //   checkbox.setAttribute("checked", "");
