@@ -34,6 +34,8 @@ addTodoBtn.addEventListener("click", function () {
   if (projectMan.getSelectedProject()) {
     toggleClass("hidden", addTodoBtn);
     toggleClass("hidden", todoInputDiv);
+    projectsInputDiv.classList.add("hidden");
+    addProjectBtn.classList.remove('hidden')
     todoInput.focus();
   } else {
     Swal.fire({
@@ -110,7 +112,6 @@ projectList.addEventListener("click", function (e) {
     });
   }
 
-
   if (target.matches(".deleteBtn")) {
     const parentDiv = e.target.parentElement;
     parentDiv.remove();
@@ -124,16 +125,14 @@ projectList.addEventListener("click", function (e) {
 todoList.addEventListener("click", function (e) {
   const target = e.target;
   if (target.matches(".editTodoButton")) {
-    const todo = target.parentElement.parentElement;//li
+    const todo = target.parentElement.parentElement; //li
     const todoID = todo.dataset.id;
-    const selectedProject = projectMan.getSelectedProject()
-    const selectedTodo = selectedProject.findTodo(todoID)
-
-
+    const selectedProject = projectMan.getSelectedProject();
+    const selectedTodo = selectedProject.findTodo(todoID);
 
     const projectTitleTodo = todo.querySelector(".projectTitleTodo");
     const projectDate = todo.querySelector(".projectDate");
-    const hiddenInputTodo = todo.nextElementSibling
+    const hiddenInputTodo = todo.nextElementSibling;
     const todoInput = hiddenInputTodo.querySelector('input[type="text"]');
     const dateTodo = hiddenInputTodo.querySelector('input[type="date"]');
     toggleClass("hidden", hiddenInputTodo);
@@ -160,18 +159,11 @@ todoList.addEventListener("click", function (e) {
     const li = target.parentElement.parentElement;
     li.remove();
   }
- 
+
   if (target.matches(".todoCheckBox")) {
-    const todoID = target.closest('.todo').dataset.id
-    const selectedProject = projectMan.getSelectedProject()
-    const selectedTtodo = selectedProject.findTodo(todoID)
-    selectedTtodo.invertFinished()
+    const todoID = target.closest(".todo").dataset.id;
+    const selectedProject = projectMan.getSelectedProject();
+    const selectedTtodo = selectedProject.findTodo(todoID);
+    selectedTtodo.invertFinished();
   }
 });
-
-// const prvi = document.querySelector('#prvi')
-// const drugi = document.querySelector('#drugi')
-
-// drugi.addEventListener('click', function(){
-//   console.log(prvi.nextElementSibling.nextElementSibling);
-// })
