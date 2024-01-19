@@ -460,3 +460,11 @@ input[type=checkbox]:checked + label:before {
 }
 
 
+
+
+.sibling{
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  background-color: white;
+}

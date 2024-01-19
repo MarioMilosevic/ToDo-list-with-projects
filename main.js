@@ -110,7 +110,6 @@ projectList.addEventListener("click", function (e) {
     });
   }
 
-  // kada se renderuju TODO da u input proslijedim vrijednost iz stejta todo objekta
 
   if (target.matches(".deleteBtn")) {
     const parentDiv = e.target.parentElement;
@@ -124,24 +123,17 @@ projectList.addEventListener("click", function (e) {
 
 todoList.addEventListener("click", function (e) {
   const target = e.target;
-  // console.log(target);
-  // console.log('nadam se ID',target.dataset.id);
-  // console.log(e.target.checked);
-  // console.log(e.currentTarget);
-  // console.dir(e.currentTarget)
-  // const todoID = e.currentTarget.dataset.id;
-  // const todoID = e.currentTarget.firstElementChild.dataset.id;
-  // const todo = selectedProject.findTodo(todoID);
-  // console.log(todo);
-  // const checkbox = e.currentTarget.firstElementChild.lastElementChild;
-
-  // console.log("chechbox", checkbox);
-  // console.log("todoID", todoID);
-
   if (target.matches(".editTodoButton")) {
-    const projectTitleTodo = document.querySelector(".projectTitleTodo");
-    const projectDate = document.querySelector(".projectDate");
-    const hiddenInputTodo = todoList.querySelector(".todoAction");
+    const todo = target.parentElement.parentElement;//li
+    const todoID = todo.dataset.id;
+    const selectedProject = projectMan.getSelectedProject()
+    const selectedTodo = selectedProject.findTodo(todoID)
+
+
+
+    const projectTitleTodo = todo.querySelector(".projectTitleTodo");
+    const projectDate = todo.querySelector(".projectDate");
+    const hiddenInputTodo = todo.nextElementSibling
     const todoInput = hiddenInputTodo.querySelector('input[type="text"]');
     const dateTodo = hiddenInputTodo.querySelector('input[type="date"]');
     toggleClass("hidden", hiddenInputTodo);
@@ -151,11 +143,10 @@ todoList.addEventListener("click", function (e) {
 
     saveBtn.addEventListener("click", function () {
       projectTitleTodo.innerText = todoInput.value;
-      todo.setTodoTitle(projectTitleTodo.innerText);
-      todo.setTodoDate(projectDate.innerText);
+      selectedTodo.setTodoTitle(projectTitleTodo.innerText);
+      selectedTodo.setTodoDate(projectDate.innerText);
       projectDate.innerText = dateTodo.value;
       hiddenInputTodo.classList.add("hidden");
-      //  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     });
 
     cancelBtn.addEventListener("click", function () {
@@ -169,41 +160,18 @@ todoList.addEventListener("click", function (e) {
     const li = target.parentElement.parentElement;
     li.remove();
   }
-  // checkbox.addEventListener('change',function(){
-  //   todo.invertFinished();
-  //   console.log(todo.getFinished());
-  //   checkbox.checked = todo.getFinished()
-  //   console.log(checkbox.checked);
-
-  // })
-
+ 
   if (target.matches(".todoCheckBox")) {
-    console.log(target.closest(".todo"));
-    console.dir(target.closest(".todo"));
     const todoID = target.closest('.todo').dataset.id
     const selectedProject = projectMan.getSelectedProject()
     const selectedTtodo = selectedProject.findTodo(todoID)
     selectedTtodo.invertFinished()
-
-
-    //   // todo.invertFinished(); // na prvi ce bit TRUE jer je prethodno FALSE
-    //   // if (todo.getFinished()) {
-    //   //   checkbox.setAttribute("checked", "");
-    //   //   // console.log(checkbox.checked);
-    //   // } else {
-    //   //   checkbox.removeAttribute("checked");
-    //   //   // console.log(checkbox.checked);
-    //   // }
-    //   // if(checkbox.checked){
-    //   //   return !checkbox.checked
-    //   // } else {
-    //   //   checkbox.checked
-    //   // }
-    //   // checkbox.checked = true ? false : true;
-    //   // console.log('stejt finished', todo.getFinished());
-    //   // console.log(checkbox.checked)
   }
 });
-// onda kasnije da provjerim za CHECKBOX da state ostane uvjek isti kada izadjem i ponovo pogledam u projekat
 
-// STRIK OSTAJE KAKO TREBA, NEGO MORAM DA PROVJERIM SELEKTOVANJE INPUTA I TODOa preko IDa
+// const prvi = document.querySelector('#prvi')
+// const drugi = document.querySelector('#drugi')
+
+// drugi.addEventListener('click', function(){
+//   console.log(prvi.nextElementSibling.nextElementSibling);
+// })
