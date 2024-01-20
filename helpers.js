@@ -65,11 +65,6 @@ export const displayTodos = (parent, child) => {
   parent.append(todo, todoAction);
 };
 
-export const attachCheckboxEvent = (list, todo) => {
-  console.log(list);
-  console.log(todo);
-};
-
 export const deleteProjectHandler = (e) => {
   if (e.target.matches(".deleteBtn")) {
     const parentDiv = e.target.parentElement;
@@ -99,11 +94,62 @@ export const getProject = (projectElement) => {
 };
 
 export const getProjectTodos = () => {
-  const selectedProject = projectMan.getSelectedProject()
+  const selectedProject = projectMan.getSelectedProject();
   const projectTodos = selectedProject.getTodos();
   return projectTodos;
 };
 
 export const emptyList = (list) => {
   list.innerHTML = "";
+};
+
+export const deleteTodo = (target) => {
+  if (target.matches(".deleteTodoButton")) {
+    const todo = target.parentElement.parentElement;
+    const todoID = todo.dataset.id;
+    const project = projectMan.getSelectedProject();
+    project.removeTodo(todoID);
+    const li = target.parentElement.parentElement;
+    li.remove();
+  }
+};
+
+export const changeCheckbox = (target) => {
+  if (target.matches(".todoCheckBox")) {
+    const todoID = target.closest(".todo").dataset.id;
+    const selectedProject = projectMan.getSelectedProject();
+    const selectedTtodo = selectedProject.findTodo(todoID);
+    selectedTtodo.invertFinished();
+  }
+};
+
+export const editTodoHandler = (target) => {
+  if (target.matches(".editTodoButton")) {
+    const todo = target.parentElement.parentElement;
+    const todoID = todo.dataset.id;
+    const selectedProject = projectMan.getSelectedProject();
+    const selectedTodo = selectedProject.findTodo(todoID);
+
+    const projectTitleTodo = todo.querySelector(".projectTitleTodo");
+    const projectDate = todo.querySelector(".projectDate");
+    const hiddenInputTodo = todo.nextElementSibling;
+    const todoInput = hiddenInputTodo.querySelector('input[type="text"]');
+    const dateTodo = hiddenInputTodo.querySelector('input[type="date"]');
+    toggleClass("hidden", hiddenInputTodo);
+
+    const saveBtn = hiddenInputTodo.querySelector(".todoActionSave");
+    const cancelBtn = hiddenInputTodo.querySelector(".todoActionDelete");
+
+    saveBtn.addEventListener("click", function () {
+      projectTitleTodo.innerText = todoInput.value;
+      selectedTodo.setTodoTitle(projectTitleTodo.innerText);
+      selectedTodo.setTodoDate(projectDate.innerText);
+      projectDate.innerText = dateTodo.value;
+      hiddenInputTodo.classList.add("hidden");
+    });
+
+    cancelBtn.addEventListener("click", function () {
+      hiddenInputTodo.classList.add("hidden");
+    });
+  }
 };
