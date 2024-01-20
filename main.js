@@ -113,6 +113,7 @@ projectList.addEventListener("click", function (e) {
   }
 
   if (target.matches(".deleteBtn")) {
+
     const parentDiv = e.target.parentElement;
     parentDiv.remove();
     const project = projectMan.getSelectedProject();
@@ -153,9 +154,12 @@ todoList.addEventListener("click", function (e) {
     });
   }
   if (target.matches(".deleteTodoButton")) {
-    const todoId = e.target.dataset.id;
+    // const todoId = e.target.dataset.id;
+    // console.log(todoId);
+    const todo = target.parentElement.parentElement; //li
+    const todoID = todo.dataset.id;
     const project = projectMan.getSelectedProject();
-    project.removeTodo(todoId);
+    project.removeTodo(todoID);
     const li = target.parentElement.parentElement;
     li.remove();
   }
