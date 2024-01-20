@@ -4,6 +4,12 @@ import {
   displayProject,
   displayTodos,
   attachCheckboxEvent,
+  deleteProjectHandler,
+  removeClass,
+  getProject,
+  getProjectTodos,
+  emptyList,
+  addClass,
 } from "./helpers";
 import { Project, ProjectManager, Todo } from "./classes";
 import Swal from "sweetalert2";
@@ -22,7 +28,7 @@ const todoInput = document.querySelector(".todoInput");
 const greenAddTodo = document.querySelector(".greenAddTodo");
 const redCancelTodo = document.querySelector(".redCancelTodo");
 
-const projectMan = new ProjectManager();
+export const projectMan = new ProjectManager();
 
 addProjectBtn.addEventListener("click", function () {
   toggleClass("hidden", addProjectBtn);
@@ -87,35 +93,18 @@ cancelBtn.addEventListener("click", function () {
 });
 
 projectList.addEventListener("click", function (e) {
-  const target = e.target;
   const projectListChildren = [...projectList.children];
-  projectListChildren.forEach((child) => {
-    child.classList.remove("selected");
-  });
-  const projectElement = target.closest(".project");
-  const projectID = projectElement.dataset.id;
-  projectElement.classList.add("selected");
-  console.log(projectID);
-  const project = projectMan.findProject(projectID);
-  projectMan.setClickedProject(project);
-  const selectedProject = projectMan.getSelectedProject();
-  console.log(selectedProject);
-
-  const projectTodos = project.getTodos();
-  todoList.innerHTML = "";
+  removeClass(projectListChildren);
+  const projectElement = e.target.closest(".project");
+  getProject(projectElement);
+  addClass(projectElement, 'selected')
+  emptyList(todoList)
+  const projectTodos = getProjectTodos()
   projectTodos.forEach((todo) => {
     displayTodos(todoList, todo);
     // attachCheckboxEvent(todoList, todo);
   });
-
-  if (target.matches(".deleteBtn")) {
-    const parentDiv = e.target.parentElement;
-    parentDiv.remove();
-    const project = projectMan.getSelectedProject();
-    projectMan.remove(project);
-    todoList.innerHTML = "";
-    projectMan.setClickedProject(null);
-  }
+  deleteProjectHandler(e);
 });
 
 todoList.addEventListener("click", function (e) {
