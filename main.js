@@ -35,7 +35,7 @@ addTodoBtn.addEventListener("click", function () {
     toggleClass("hidden", addTodoBtn);
     toggleClass("hidden", todoInputDiv);
     projectsInputDiv.classList.add("hidden");
-    addProjectBtn.classList.remove('hidden')
+    addProjectBtn.classList.remove("hidden");
     todoInput.focus();
   } else {
     Swal.fire({
@@ -88,32 +88,27 @@ cancelBtn.addEventListener("click", function () {
 
 projectList.addEventListener("click", function (e) {
   const target = e.target;
-  if (target.dataset.id) {
-    const projects = [...projectList.children];
-    projects.forEach((li) => {
-      li.classList.remove("selected");
-      const childrenArr = Array.from(li.children);
-      childrenArr.forEach((child) => {
-        child.classList.remove("selected");
-      });
-    });
-    if (target.matches(".projectTitle")) {
-      const parent = target.parentElement;
-      parent.classList.add("selected");
-    }
-    target.classList.add("selected");
-    const project = projectMan.findProject(target.dataset.id);
-    projectMan.setClickedProject(project);
-    const projectTodos = project.getTodos();
-    todoList.innerHTML = "";
-    projectTodos.forEach((todo) => {
-      displayTodos(todoList, todo);
-      attachCheckboxEvent(todoList, todo);
-    });
-  }
+  const projectListChildren = [...projectList.children];
+  projectListChildren.forEach((child) => {
+    child.classList.remove("selected");
+  });
+  const projectElement = target.closest(".project");
+  const projectID = projectElement.dataset.id;
+  projectElement.classList.add("selected");
+  console.log(projectID);
+  const project = projectMan.findProject(projectID);
+  projectMan.setClickedProject(project);
+  const selectedProject = projectMan.getSelectedProject();
+  console.log(selectedProject);
+
+  const projectTodos = project.getTodos();
+  todoList.innerHTML = "";
+  projectTodos.forEach((todo) => {
+    displayTodos(todoList, todo);
+    // attachCheckboxEvent(todoList, todo);
+  });
 
   if (target.matches(".deleteBtn")) {
-
     const parentDiv = e.target.parentElement;
     parentDiv.remove();
     const project = projectMan.getSelectedProject();
@@ -126,7 +121,7 @@ projectList.addEventListener("click", function (e) {
 todoList.addEventListener("click", function (e) {
   const target = e.target;
   if (target.matches(".editTodoButton")) {
-    const todo = target.parentElement.parentElement; //li
+    const todo = target.parentElement.parentElement;
     const todoID = todo.dataset.id;
     const selectedProject = projectMan.getSelectedProject();
     const selectedTodo = selectedProject.findTodo(todoID);
@@ -154,9 +149,7 @@ todoList.addEventListener("click", function (e) {
     });
   }
   if (target.matches(".deleteTodoButton")) {
-    // const todoId = e.target.dataset.id;
-    // console.log(todoId);
-    const todo = target.parentElement.parentElement; //li
+    const todo = target.parentElement.parentElement;
     const todoID = todo.dataset.id;
     const project = projectMan.getSelectedProject();
     project.removeTodo(todoID);

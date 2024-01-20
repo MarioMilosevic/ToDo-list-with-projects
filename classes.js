@@ -40,6 +40,13 @@ export class ProjectManager {
     this.projects = this.projects.filter((el) => el.id !== project.id);
   }
 
+  removeClass() {
+    this.projects.forEach((project) => {
+      console.log(project);
+      project.classList.remove("selected");
+    });
+  }
+
   setClickedProject(project) {
     this.clicked = project;
   }
